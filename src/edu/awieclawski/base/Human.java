@@ -1,7 +1,7 @@
 package edu.awieclawski.base;
 
 import edu.awieclawski.exc.NotPositiveException;
-import edu.awieclawski.srvc.Validate;
+import edu.awieclawski.srvc.Validator;
 
 public abstract class Human {
 
@@ -52,13 +52,13 @@ public abstract class Human {
 
 	private void errorMsgs() {
 		try {
-			Validate.biggerThanZero(this.weight);
+			Validator.biggerThanZero(this.weight);
 		} catch (NotPositiveException e) {
 			System.out.println(e.getMessage() + "|Weight=" + this.weight);
 		}
 
 		try {
-			Validate.biggerThanZero(this.height);
+			Validator.biggerThanZero(this.height);
 		} catch (NotPositiveException e) {
 			System.out.println(e.getMessage() + "|Height=" + this.height);
 		}

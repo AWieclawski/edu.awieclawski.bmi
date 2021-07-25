@@ -2,7 +2,13 @@ package edu.awieclawski.srvc;
 
 import edu.awieclawski.exc.NotPositiveException;
 
-public class Validate {
+/**
+ * Simple comparison methods returning boolean 
+ * 
+ * @author AWieclawski
+ *
+ */
+public class Validator {
 
 	public static boolean biggerThanZero(double number) throws NotPositiveException {
 		if (number <= 0)

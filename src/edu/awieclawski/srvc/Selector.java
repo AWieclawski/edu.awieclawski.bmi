@@ -2,6 +2,12 @@ package edu.awieclawski.srvc;
 
 import edu.awieclawski.base.Comments;
 
+/**
+ * The class that builds the description of the result of the BMI calculation
+ * 
+ * @author AWieclawski
+ *
+ */
 public class Selector {
 
 	public String buildComment(int tire) {

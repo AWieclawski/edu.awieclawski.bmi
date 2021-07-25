@@ -5,7 +5,13 @@ import java.util.Map;
 import edu.awieclawski.exc.NotInRangeException;
 import edu.awieclawski.exc.NotPositiveException;
 
-public class Calc {
+/**
+ * The class contains logic comparing the received data with the BMI tables
+ * 
+ * @author AWieclawski
+ *
+ */
+public class Calculator {
 
 	public int getBMITire(Map<double[], double[][]> map, double bmi, int age) throws NotInRangeException {
 		int result = 1;
@@ -16,7 +22,7 @@ public class Calc {
 			return -1;
 
 		try {
-			check = Validate.biggerThanZero(age);
+			check = Validator.biggerThanZero(age);
 		} catch (NotPositiveException e) {
 			System.out.println(e.getMessage() + "|Age=" + age);
 			return -1;

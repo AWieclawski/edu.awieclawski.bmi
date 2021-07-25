@@ -5,6 +5,12 @@ import java.util.Map;
 
 import edu.awieclawski.base.I_Format;
 
+/**
+ * BMI table with data regarding Male
+ * 
+ * @author AWieclawski
+ *
+ */
 public interface I_Man extends I_Format {
 
 	final static boolean IS_MAN = true;
