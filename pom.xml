@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.awieclawski</groupId>
-	<artifactId>imex</artifactId>
+	<artifactId>bmi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>Calculate BMI</name>
@@ -16,8 +16,8 @@
 		<org.springframework.boot.version>2.1.6.RELEASE</org.springframework.boot.version>
 		<mysql-connector-java.version>8.0.15</mysql-connector-java.version>
 		<org.apache.tomcat.embed.version>9.0.12</org.apache.tomcat.embed.version>
-		<!-- <jackson.core.version>2.9.9</jackson.core.version> -->
-		<!-- <jackson.dataformat.version>2.9.9</jackson.dataformat.version> -->
+		<hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
+		<javax.el.version>3.0.0</javax.el.version>
 		<jstl.version>1.2</jstl.version>
 		<java.version>1.8</java.version>
 	</properties>
@@ -35,6 +35,18 @@
 	</dependencyManagement>
 
 	<dependencies>
+
+		<!-- To handle errors from models / entities -->
+		<!-- https://www.baeldung.com/javax-validation  -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

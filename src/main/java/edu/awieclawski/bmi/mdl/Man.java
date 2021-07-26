@@ -21,6 +21,11 @@ public class Man extends Human implements I_Man {
 		super(age, weight, height);
 	}
 
+	public Man() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String commentBMI() {
 		String result = Comments.ERROR.getDescription();

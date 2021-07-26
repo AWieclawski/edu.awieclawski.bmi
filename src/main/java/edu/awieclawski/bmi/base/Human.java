@@ -1,20 +1,37 @@
 package edu.awieclawski.bmi.base;
 
+//import javax.validation.constraints.Max;
+//import javax.validation.constraints.Min;
+//import javax.validation.constraints.NotNull;
+
 import edu.awieclawski.bmi.exc.NotPositiveException;
 import edu.awieclawski.bmi.srvc.Validator;
 
 public abstract class Human {
-
-	private int age;
-	private double weight;
-	private double height;
 	private double zero = 0.0;
+
+//	@NotNull
+//	@Min(18)
+//	@Max(199)
+	private int age;
+
+//	@NotNull
+//	@Max(500)
+	private double weight;
+
+//	@NotNull
+//	@Max(3)
+	private double height;
 
 	public Human(int age, double weight, double height) {
 		super();
 		this.age = age;
 		this.weight = weight;
 		this.height = height;
+	}
+
+	public Human() {
+		super();
 	}
 
 	public abstract String commentBMI();

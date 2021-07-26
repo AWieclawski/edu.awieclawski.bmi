@@ -2,7 +2,8 @@ package edu.awieclawski.bmi.base;
 
 public enum Comments {
 	UNDER("Underweight"), NORMAL("Normal range"), OVER("Overweight (Pre-obese)"), OBESE("Obese"),
-	NORESULT("Result out of range! "), ERROR("Something went wrong! ");
+	NORESULT("Result out of range! "), ERROR("Something went wrong! "),
+	CANCEL("You clicked cancel, please re-enter male details: ");
 
 	String description;
 

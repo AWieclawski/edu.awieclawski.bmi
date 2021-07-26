@@ -20,6 +20,13 @@ public class Woman extends Human implements I_Woman {
 	public Woman(int age, double weight, double height) {
 		super(age, weight, height);
 	}
+	
+	public Woman() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 	@Override
 	public String commentBMI() {

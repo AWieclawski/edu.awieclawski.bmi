@@ -18,6 +18,7 @@ public interface I_Woman extends I_Format {
 	final static double MAX_BMI = 99;
 	final static double MIN_AGE = 18;
 	final static double MAX_AGE = 199;
+	final static String SEX = "Female";
 
 	public static Map<double[], double[][]> getBMImap() {
 		double[] key = new double[1];
