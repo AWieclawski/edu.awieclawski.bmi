@@ -1,9 +1,9 @@
-package edu.awieclawski.srvc;
+package edu.awieclawski.bmi.srvc;
 
 import java.util.Map;
 
-import edu.awieclawski.exc.NotInRangeException;
-import edu.awieclawski.exc.NotPositiveException;
+import edu.awieclawski.bmi.exc.NotInRangeException;
+import edu.awieclawski.bmi.exc.NotPositiveException;
 
 /**
  * The class contains logic comparing the received data with the BMI tables

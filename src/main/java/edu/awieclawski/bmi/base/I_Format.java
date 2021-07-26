@@ -1,4 +1,4 @@
-package edu.awieclawski.base;
+package edu.awieclawski.bmi.base;
 
 import java.text.DecimalFormat;
 

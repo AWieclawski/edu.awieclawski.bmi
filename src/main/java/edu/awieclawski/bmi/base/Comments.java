@@ -1,4 +1,4 @@
-package edu.awieclawski.base;
+package edu.awieclawski.bmi.base;
 
 public enum Comments {
 	UNDER("Underweight"), NORMAL("Normal range"), OVER("Overweight (Pre-obese)"), OBESE("Obese"),

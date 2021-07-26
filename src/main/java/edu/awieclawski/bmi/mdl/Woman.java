@@ -1,23 +1,23 @@
-package edu.awieclawski.mdl;
+package edu.awieclawski.bmi.mdl;
 
-import edu.awieclawski.base.Comments;
-import edu.awieclawski.base.Human;
-import edu.awieclawski.exc.NotInRangeException;
-import edu.awieclawski.sex.I_Man;
-import edu.awieclawski.srvc.Calculator;
-import edu.awieclawski.srvc.Selector;
-import edu.awieclawski.srvc.Validator;
+import edu.awieclawski.bmi.base.Comments;
+import edu.awieclawski.bmi.base.Human;
+import edu.awieclawski.bmi.exc.NotInRangeException;
+import edu.awieclawski.bmi.sex.I_Woman;
+import edu.awieclawski.bmi.srvc.Calculator;
+import edu.awieclawski.bmi.srvc.Selector;
+import edu.awieclawski.bmi.srvc.Validator;
 
 /**
- * Man class containing methods that return the results of enumerations from
- * utility classes regarding Male
+ * Woman class containing methods that return the results of enumerations from
+ * utility classes regarding Female
  * 
  * @author AWieclawski
  *
  */
-public class Man extends Human implements I_Man {
+public class Woman extends Human implements I_Woman {
 
-	public Man(int age, double weight, double height) {
+	public Woman(int age, double weight, double height) {
 		super(age, weight, height);
 	}
 
@@ -26,7 +26,7 @@ public class Man extends Human implements I_Man {
 		String result = Comments.ERROR.getDescription();
 		int tire = -1;
 		try {
-			tire = new Calculator().getBMITire(I_Man.getBMImap(), getBMI(), getAge());
+			tire = new Calculator().getBMITire(I_Woman.getBMImap(), getBMI(), getAge());
 		} catch (NotInRangeException e) {
 			displayErrorMsgs(e.getMessage());
 		}

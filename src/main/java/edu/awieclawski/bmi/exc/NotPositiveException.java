@@ -1,4 +1,4 @@
-package edu.awieclawski.exc;
+package edu.awieclawski.bmi.exc;
 
 public class NotPositiveException extends Exception {
 

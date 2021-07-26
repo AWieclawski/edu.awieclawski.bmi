@@ -1,6 +1,6 @@
-package edu.awieclawski.srvc;
+package edu.awieclawski.bmi.srvc;
 
-import edu.awieclawski.exc.NotPositiveException;
+import edu.awieclawski.bmi.exc.NotPositiveException;
 
 /**
  * Simple comparison methods returning boolean 

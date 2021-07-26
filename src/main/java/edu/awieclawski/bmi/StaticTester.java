@@ -1,9 +1,9 @@
 package edu.awieclawski.bmi;
 
-import edu.awieclawski.mdl.Man;
-import edu.awieclawski.mdl.Woman;
+import edu.awieclawski.bmi.mdl.Man;
+import edu.awieclawski.bmi.mdl.Woman;
 
-public class DoIt {
+public class StaticTester {
 
 	public static void main(String[] args) {
 

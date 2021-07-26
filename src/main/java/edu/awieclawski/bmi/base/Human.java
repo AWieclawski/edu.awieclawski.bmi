@@ -1,7 +1,7 @@
-package edu.awieclawski.base;
+package edu.awieclawski.bmi.base;
 
-import edu.awieclawski.exc.NotPositiveException;
-import edu.awieclawski.srvc.Validator;
+import edu.awieclawski.bmi.exc.NotPositiveException;
+import edu.awieclawski.bmi.srvc.Validator;
 
 public abstract class Human {
 
