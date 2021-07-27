@@ -44,7 +44,7 @@ public class Woman extends Human implements I_Woman {
 	}
 
 	private void displayErrorMsgs(String msg) {
-		if (!Validator.isInRange(getAge(), MIN_AGE, MAX_AGE))
+		if (!Validator.isInRange(getAge(), AGE_MIN, AGE_MAX))
 			System.out.println(msg + "|Age=" + DEC_FORMAT.format(getAge()));
 
 		if (!Validator.isInRange(this.getBMI(), MIN_BMI, MAX_BMI))
@@ -53,7 +53,7 @@ public class Woman extends Human implements I_Woman {
 
 	@Override
 	public String toString() {
-		return "Man [age=" + getAge() + ", weight=" + getWeight() + ", height=" + getHeight() + "]";
+		return "Woman [age=" + getAge() + ", weight=" + getWeight() + ", height=" + getHeight() + "]";
 	}
 
 }

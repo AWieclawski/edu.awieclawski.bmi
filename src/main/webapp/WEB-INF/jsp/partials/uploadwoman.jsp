@@ -17,6 +17,7 @@
 			<div class="col-sm-10">
 
 				<form:input path="age" placeholder="input age" />
+				<form:errors class="alert alert-warning" path="age" />
 
 			</div>
 
@@ -29,6 +30,7 @@
 			<div class="col-sm-10">
 
 				<form:input path="weight" placeholder="input weight" />
+				<form:errors class="alert alert-warning" path="weight" />
 
 			</div>
 
@@ -41,6 +43,7 @@
 			<div class="col-sm-10">
 
 				<form:input path="height" placeholder="input height" />
+				<form:errors class="alert alert-warning" path="height" />
 
 			</div>
 

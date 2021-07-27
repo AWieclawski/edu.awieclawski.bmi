@@ -29,7 +29,8 @@ public class InputDataController {
 	@RequestMapping(value = "/upman", method = RequestMethod.POST)
 	public String submitMan(@Valid @ModelAttribute("man") final Man man, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
-			return "/error";
+			model.addAttribute("ismale", true); // very important to correct handle form partials
+			return "/upform";
 		}
 		model.addAttribute("sessionperson", man);
 		return "redirect:/confirmman";
@@ -44,13 +45,14 @@ public class InputDataController {
 	@RequestMapping(value = "/woman", method = RequestMethod.GET)
 	public ModelAndView showWoman(Model model) {
 		model.addAttribute("ismale", false);
-		return new ModelAndView("/womanform", "woman", new Woman());
+		return new ModelAndView("/upform", "woman", new Woman());
 	}
 
 	@RequestMapping(value = "/upwoman", method = RequestMethod.POST)
 	public String submitWoman(@Valid @ModelAttribute("woman") final Woman woman, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
-			return "/error";
+			model.addAttribute("ismale", false); // very important to correct handle form partials
+			return "/upform";
 		}
 		model.addAttribute("sessionperson", woman);
 		return "redirect:/confirmwoman";
