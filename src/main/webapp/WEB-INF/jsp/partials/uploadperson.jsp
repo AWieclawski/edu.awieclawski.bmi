@@ -15,8 +15,6 @@
 
 	<h3>Input data to calculate ${hed} BMI</h3>
 
-	<h4>${message}</h4>
-
 	<form:form class="form-horizontal" action="/${act}" method="post"
 		modelAttribute="${sex}" enctype="multipart/form-data">
 
@@ -63,7 +61,9 @@
 
 			<div class="col-sm-offset-2 col-sm-10">
 
-				<button type="submit" class="btn btn-default">Submit</button>
+				<button class="btn btn-primary" type="submit" name="submit">Submit</button>
+
+				<button class="btn btn-secondary" type="submit" name="cancel">Cancel</button>
 
 			</div>
 

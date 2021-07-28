@@ -24,6 +24,8 @@
 			<jsp:include page="partials/uploadperson.jsp" />
 
 		</div>
+		
+			<h4>${message}</h4>
 
 	</div>
 

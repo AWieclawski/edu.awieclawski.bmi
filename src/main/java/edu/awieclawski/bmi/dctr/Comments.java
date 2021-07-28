@@ -3,7 +3,7 @@ package edu.awieclawski.bmi.dctr;
 public enum Comments {
 	UNDER("Underweight"), NORMAL("Normal range"), OVER("Overweight (Pre-obese)"), OBESE("Obese"),
 	NORESULT("Result out of range! "), ERROR("Some error occurred! "),
-	CANCEL("You clicked cancel, please re-enter male details: ");
+	CANCEL("You clicked cancel, please re-enter data ");
 
 	String description;
 

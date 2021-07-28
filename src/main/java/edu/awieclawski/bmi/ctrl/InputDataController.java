@@ -26,7 +26,7 @@ public class InputDataController {
 		return new ModelAndView("/upform", "man", new Man());
 	}
 
-	@RequestMapping(value = "/upman", method = RequestMethod.POST)
+	@RequestMapping(value = "/upman", method = RequestMethod.POST, params = "submit")
 	public String submitMan(@Valid @ModelAttribute("man") final Man man, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			model.addAttribute("ismale", true); // very important to correct handle form partials
@@ -38,7 +38,8 @@ public class InputDataController {
 
 	@RequestMapping(value = "/upman", method = RequestMethod.POST, params = "cancel")
 	public String cancelMan(@Valid @ModelAttribute("man") final Man man, BindingResult result, ModelMap model) {
-		model.addAttribute("message", Comments.CANCEL);
+		model.addAttribute("message", Comments.CANCEL.getDescription());
+		model.addAttribute("ismale", true);
 		return "/upform";
 	}
 
@@ -48,7 +49,7 @@ public class InputDataController {
 		return new ModelAndView("/upform", "woman", new Woman());
 	}
 
-	@RequestMapping(value = "/upwoman", method = RequestMethod.POST)
+	@RequestMapping(value = "/upwoman", method = RequestMethod.POST, params = "submit")
 	public String submitWoman(@Valid @ModelAttribute("woman") final Woman woman, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			model.addAttribute("ismale", false); // very important to correct handle form partials
@@ -60,7 +61,8 @@ public class InputDataController {
 
 	@RequestMapping(value = "/upwoman", method = RequestMethod.POST, params = "cancel")
 	public String cancelWoman(@Valid @ModelAttribute("woman") final Woman woman, BindingResult result, ModelMap model) {
-		model.addAttribute("message", Comments.CANCEL);
+		model.addAttribute("message", Comments.CANCEL.getDescription());
+		model.addAttribute("ismale", false); 
 		return "/upform";
 	}
 	
