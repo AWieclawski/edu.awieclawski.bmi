@@ -3,6 +3,7 @@ package edu.awieclawski.bmi.base;
 import java.math.BigDecimal;
 //import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.Map;
 
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
@@ -10,6 +11,8 @@ import javax.validation.constraints.NotNull;
 
 import edu.awieclawski.bmi.exc.NotInRangeException;
 import edu.awieclawski.bmi.exc.NotPositiveException;
+import edu.awieclawski.bmi.srvc.Calculator;
+import edu.awieclawski.bmi.srvc.Selector;
 import edu.awieclawski.bmi.srvc.Validator;
 
 public abstract class Human implements I_Human, I_UOMs {
@@ -39,15 +42,26 @@ public abstract class Human implements I_Human, I_UOMs {
 		super();
 	}
 
-	public abstract String commentBMI();
-
 	protected BigDecimal getBMI() {
-		if (this.weight.compareTo(zero) > 0 && this.height.compareTo(zero) > 0) {
-			if (displayErrorMsgsIfNotInRange())
+		if (isBiggerThanZero())
+			if (isNotInRange())
 				return this.weight.divide(this.height.multiply(this.height), DEC_COMMA, RoundingMode.HALF_UP);
-		}
-		displayErrorMsgsIfNotBiggerThanZero();
 		return zero;
+	}
+
+	protected String buildCommentBMI(Map<BigDecimal[], BigDecimal[][]> map) {
+		String result = Comments.ERROR.getDescription();
+		int tire = -1;
+		boolean check = true;
+		try {
+			tire = new Calculator().getBMITire(map, getBMI(), getAge());
+		} catch (NotInRangeException e) {
+			check = ifNotFoundInTable();
+		}
+		if (tire > 0 && check)
+			result = new Selector().buildComment(tire);
+
+		return result;
 	}
 
 	public BigDecimal getAge() {
@@ -74,21 +88,26 @@ public abstract class Human implements I_Human, I_UOMs {
 		this.height = height;
 	}
 
-	private void displayErrorMsgsIfNotBiggerThanZero() {
+	private boolean isBiggerThanZero() {
+		boolean result = true;
 		try {
 			Validator.biggerThanZero(this.weight);
 		} catch (NotPositiveException e) {
 			System.out.println(e.getMessage() + "|Weight=" + this.weight);
+			result = false;
 		}
 
 		try {
 			Validator.biggerThanZero(this.height);
 		} catch (NotPositiveException e) {
 			System.out.println(e.getMessage() + "|Height=" + this.height);
+			result = false;
 		}
+
+		return result;
 	}
 
-	private boolean displayErrorMsgsIfNotInRange() {
+	private boolean isNotInRange() {
 		boolean result = true;
 		try {
 			Validator.isInRange(this.weight, WGHT_MIN, WGHT_MAX);
@@ -107,7 +126,7 @@ public abstract class Human implements I_Human, I_UOMs {
 		return result;
 	}
 
-	public boolean displayErrorMsgsIfBMINotInRange() {
+	public boolean ifNotFoundInTable() {
 		boolean result = true;
 		try {
 			Validator.isInRange(this.age, AGE_MIN, AGE_MAX);
@@ -122,7 +141,7 @@ public abstract class Human implements I_Human, I_UOMs {
 			result = false;
 			System.out.println(e.getMessage() + "|BMI=" + DEC_FORMAT.format(getBMI()));
 		}
-		
+
 		return result;
 	}
 
