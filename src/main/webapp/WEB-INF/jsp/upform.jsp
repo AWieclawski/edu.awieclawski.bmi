@@ -19,30 +19,11 @@
 
 		<jsp:include page="partials/menu.jsp" />
 
-		<c:choose>
+		<div class="jumbotron text-center">
 
-			<c:when test="${requestScope.ismale}">
+			<jsp:include page="partials/uploadperson.jsp" />
 
-				<div class="jumbotron text-center">
-
-					<jsp:include page="partials/uploadman.jsp" />
-
-				</div>
-
-			</c:when>
-
-			<c:otherwise>
-
-				<div class="jumbotron text-center">
-
-					<jsp:include page="partials/uploadwoman.jsp" />
-
-				</div>
-
-			</c:otherwise>
-
-		</c:choose>
-
+		</div>
 
 	</div>
 

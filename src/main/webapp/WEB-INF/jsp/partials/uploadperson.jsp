@@ -1,14 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div>
 
-	<h3>Input data to calculate Female BMI</h3>
+	<c:set var="sex" scope="session" value="woman" />
+	<c:set var="act" scope="session" value="upwoman" />
+	<c:set var="hed" scope="session" value="Female" />
+	<c:if test="${ismale}">
+		<c:set var="sex" scope="session" value="man" />
+		<c:set var="act" scope="session" value="upman" />
+		<c:set var="hed" scope="session" value="Male" />
+	</c:if>
+
+	<h3>Input data to calculate ${hed} BMI</h3>
 
 	<h4>${message}</h4>
 
-	<form:form class="form-horizontal" action="/upwoman" method="post"
-		modelAttribute="woman" enctype="multipart/form-data">
+	<form:form class="form-horizontal" action="/${act}" method="post"
+		modelAttribute="${sex}" enctype="multipart/form-data">
 
 		<div class="form-group">
 
