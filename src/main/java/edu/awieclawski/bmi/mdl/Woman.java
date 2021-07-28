@@ -23,7 +23,6 @@ public class Woman extends Human implements I_Woman {
 	
 	public Woman() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 

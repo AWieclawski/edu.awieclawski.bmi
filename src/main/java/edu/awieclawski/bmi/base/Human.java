@@ -7,23 +7,25 @@ import javax.validation.constraints.NotNull;
 import edu.awieclawski.bmi.exc.NotPositiveException;
 import edu.awieclawski.bmi.srvc.Validator;
 
-public abstract class Human {
+public abstract class Human implements I_Human {
 	private double zero = 0.0;
-	public final static String WGHT_NOTNULL = "Weight cannot be null";
-	public final static String HGHT_NOTNULL = "Height cannot be null";
-	public final static String AGE_NOTNULL = "Age cannot be null";
-	public final static int AGE_MIN = 18;
-	public final static int AGE_MAX = 199;
-	public final static String AGE_MINTXT = "Age should not be less than " + AGE_MIN;
-	public final static String AGE_MAXTXT = "Age should not be greater than " + AGE_MAX;
-	public final static int WGHT_MIN = 1;
-	public final static int WGHT_MAX = 499;
-	public final static String WGHT_MINTXT = "Weight should not be less than " + WGHT_MIN;
-	public final static String WGHT_MAXTXT = "Weight should not be greater than " + WGHT_MAX;
-	public final static int HGHT_MIN = 1;
-	public final static int HGHT_MAX = 3;
-	public final static String HGHT_MINTXT = "Height should not be less than " + HGHT_MIN;
-	public final static String HGHT_MAXTXT = "Height should not be greater than " + HGHT_MAX;
+	public final static double MIN_BMI = 0;
+//	public final static double MAX_BMI = 99;	
+//	public final static String WGHT_NOTNULL = "Weight cannot be null";
+//	public final static String HGHT_NOTNULL = "Height cannot be null";
+//	public final static String AGE_NOTNULL = "Age cannot be null";
+//	public final static int AGE_MIN = 18;
+//	public final static int AGE_MAX = 199;
+//	public final static String AGE_MINTXT = "Age should not be less than " + AGE_MIN;
+//	public final static String AGE_MAXTXT = "Age should not be greater than " + AGE_MAX;
+//	public final static int WGHT_MIN = 1;
+//	public final static int WGHT_MAX = 499;
+//	public final static String WGHT_MINTXT = "Weight should not be less than " + WGHT_MIN;
+//	public final static String WGHT_MAXTXT = "Weight should not be greater than " + WGHT_MAX;
+//	public final static int HGHT_MIN = 1;
+//	public final static int HGHT_MAX = 3;
+//	public final static String HGHT_MINTXT = "Height should not be less than " + HGHT_MIN;
+//	public final static String HGHT_MAXTXT = "Height should not be greater than " + HGHT_MAX;
 
 	@NotNull(message = AGE_NOTNULL)
 	@Min(value = AGE_MIN, message = AGE_MINTXT)
