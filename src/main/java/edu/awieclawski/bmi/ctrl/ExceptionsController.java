@@ -1,4 +1,4 @@
-package edu.awieclawski.bmi.ctr;
+package edu.awieclawski.bmi.ctrl;
 
 //import java.util.logging.Level;
 //import java.util.logging.Logger;

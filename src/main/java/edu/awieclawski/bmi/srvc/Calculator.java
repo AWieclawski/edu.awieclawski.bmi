@@ -3,8 +3,8 @@ package edu.awieclawski.bmi.srvc;
 import java.math.BigDecimal;
 import java.util.Map;
 
-import edu.awieclawski.bmi.exc.NotInRangeException;
-import edu.awieclawski.bmi.exc.NotPositiveException;
+import edu.awieclawski.bmi.excp.NotInRangeException;
+import edu.awieclawski.bmi.excp.NotPositiveException;
 
 /**
  * The class contains logic comparing the received data with the BMI tables

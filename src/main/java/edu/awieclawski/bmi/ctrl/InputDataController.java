@@ -1,4 +1,4 @@
-package edu.awieclawski.bmi.ctr;
+package edu.awieclawski.bmi.ctrl;
 
 import javax.validation.Valid;
 
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import edu.awieclawski.bmi.base.Comments;
-import edu.awieclawski.bmi.mdl.Man;
-import edu.awieclawski.bmi.mdl.Woman;
+import edu.awieclawski.bmi.dctr.Comments;
+import edu.awieclawski.bmi.prsn.Man;
+import edu.awieclawski.bmi.prsn.Woman;
 
 @Controller
 @SessionAttributes("sessionperson") // Woman or Man instance

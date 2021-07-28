@@ -1,9 +1,9 @@
-package edu.awieclawski.bmi.mdl;
+package edu.awieclawski.bmi.prsn;
 
 import java.math.BigDecimal;
 
 import edu.awieclawski.bmi.base.Human;
-import edu.awieclawski.bmi.sex.I_Woman;
+import edu.awieclawski.bmi.tbl.I_Woman;
 
 /**
  * Woman class containing methods that return the results of enumerations from

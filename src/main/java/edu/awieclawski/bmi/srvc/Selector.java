@@ -1,6 +1,6 @@
 package edu.awieclawski.bmi.srvc;
 
-import edu.awieclawski.bmi.base.Comments;
+import edu.awieclawski.bmi.dctr.Comments;
 
 /**
  * The class that builds the description of the result of the BMI calculation

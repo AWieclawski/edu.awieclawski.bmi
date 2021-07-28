@@ -9,8 +9,10 @@ import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
-import edu.awieclawski.bmi.exc.NotInRangeException;
-import edu.awieclawski.bmi.exc.NotPositiveException;
+import edu.awieclawski.bmi.dctr.Comments;
+import edu.awieclawski.bmi.dctr.I_UOMs;
+import edu.awieclawski.bmi.excp.NotInRangeException;
+import edu.awieclawski.bmi.excp.NotPositiveException;
 import edu.awieclawski.bmi.srvc.Calculator;
 import edu.awieclawski.bmi.srvc.Selector;
 import edu.awieclawski.bmi.srvc.Validator;

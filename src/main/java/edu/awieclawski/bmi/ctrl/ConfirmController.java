@@ -1,4 +1,4 @@
-package edu.awieclawski.bmi.ctr;
+package edu.awieclawski.bmi.ctrl;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import edu.awieclawski.bmi.base.I_UOMs;
-import edu.awieclawski.bmi.mdl.Man;
-import edu.awieclawski.bmi.mdl.Woman;
-import edu.awieclawski.bmi.sex.I_Man;
-import edu.awieclawski.bmi.sex.I_Woman;
+import edu.awieclawski.bmi.dctr.I_UOMs;
+import edu.awieclawski.bmi.prsn.Man;
+import edu.awieclawski.bmi.prsn.Woman;
+import edu.awieclawski.bmi.tbl.I_Man;
+import edu.awieclawski.bmi.tbl.I_Woman;
 
 @Controller // landing page for results
 public class ConfirmController {

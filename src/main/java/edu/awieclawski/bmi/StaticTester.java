@@ -2,8 +2,8 @@ package edu.awieclawski.bmi;
 
 import java.math.BigDecimal;
 
-import edu.awieclawski.bmi.mdl.Man;
-import edu.awieclawski.bmi.mdl.Woman;
+import edu.awieclawski.bmi.prsn.Man;
+import edu.awieclawski.bmi.prsn.Woman;
 
 public class StaticTester {
 

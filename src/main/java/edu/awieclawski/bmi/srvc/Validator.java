@@ -2,8 +2,8 @@ package edu.awieclawski.bmi.srvc;
 
 import java.math.BigDecimal;
 
-import edu.awieclawski.bmi.exc.NotInRangeException;
-import edu.awieclawski.bmi.exc.NotPositiveException;
+import edu.awieclawski.bmi.excp.NotInRangeException;
+import edu.awieclawski.bmi.excp.NotPositiveException;
 
 /**
  * Simple comparison methods returning boolean

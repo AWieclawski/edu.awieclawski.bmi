@@ -1,4 +1,4 @@
-package edu.awieclawski.bmi.ctr;
+package edu.awieclawski.bmi.ctrl;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 
