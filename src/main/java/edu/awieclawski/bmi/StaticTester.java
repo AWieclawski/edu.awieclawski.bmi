@@ -1,5 +1,7 @@
 package edu.awieclawski.bmi;
 
+import java.math.BigDecimal;
+
 import edu.awieclawski.bmi.mdl.Man;
 import edu.awieclawski.bmi.mdl.Woman;
 
@@ -7,51 +9,79 @@ public class StaticTester {
 
 	public static void main(String[] args) {
 
-		Man mm = new Man(19, -1, 1.8);
+		Man mm = new Man(new BigDecimal(18), new BigDecimal(77), new BigDecimal(1.8));
 		System.out.println("\n" + mm.toString());
-		System.out.println(mm.commentBMI());
-
-		mm = new Man(19, 155, -2);
-		System.out.println("\n" + mm.toString());
-		System.out.println(mm.commentBMI());
-
-		mm = new Man(-2, 88, 1.9);
-		System.out.println("\n" + mm.toString());
-		System.out.println(mm.commentBMI());
-
-		mm = new Man(333, 88, 1.9);
-		System.out.println("\n" + mm.toString());
-		System.out.println(mm.commentBMI());
-
-		mm = new Man(0, 78.6, 1.8);
-		System.out.println("\n" + mm.toString());
-		System.out.println(mm.commentBMI());
+		System.out.println(mm.commentBMI()); // OK
 		
-		mm = new Man(11, 78.6, 1.8);
+		mm = new Man(new BigDecimal(18.1), new BigDecimal(77), new BigDecimal(1.8));
 		System.out.println("\n" + mm.toString());
-		System.out.println(mm.commentBMI());
-
-		mm = new Man(19, 222, 1.1);
-		System.out.println("\n" + mm.toString());
-		System.out.println(mm.commentBMI());
+		System.out.println(mm.commentBMI()); // OK
 		
-		Woman wm = new Woman(0, 78.6, 1.8);
+		mm = new Man(new BigDecimal(19), new BigDecimal(-1), new BigDecimal(1.8));
+		System.out.println("\n" + mm.toString());
+		System.out.println(mm.commentBMI());
+
+		mm = new Man(new BigDecimal(19), new BigDecimal(155), new BigDecimal(-2));
+		System.out.println("\n" + mm.toString());
+		System.out.println(mm.commentBMI());
+
+		mm = new Man(new BigDecimal(-2), new BigDecimal(88), new BigDecimal(1.9));
+		System.out.println("\n" + mm.toString());
+		System.out.println(mm.commentBMI());
+
+		mm = new Man(new BigDecimal(333), new BigDecimal(88), new BigDecimal(1.9));
+		System.out.println("\n" + mm.toString());
+		System.out.println(mm.commentBMI());
+
+		mm = new Man(new BigDecimal(0), new BigDecimal(78.6), new BigDecimal(1.8));
+		System.out.println("\n" + mm.toString());
+		System.out.println(mm.commentBMI());
+
+		mm = new Man(new BigDecimal(11), new BigDecimal(78.6), new BigDecimal(1.8));
+		System.out.println("\n" + mm.toString());
+		System.out.println(mm.commentBMI());
+
+		mm = new Man(new BigDecimal(19), new BigDecimal(77), new BigDecimal(3.1));
+		System.out.println("\n" + mm.toString());
+		System.out.println(mm.commentBMI());
+
+		mm = new Man(new BigDecimal(19), new BigDecimal(777), new BigDecimal(1.7));
+		System.out.println("\n" + mm.toString());
+		System.out.println(mm.commentBMI());
+
+		Woman wm = new Woman(new BigDecimal(18), new BigDecimal(56), new BigDecimal(1.7));
+		System.out.println("\n" + wm.toString());
+		System.out.println(wm.commentBMI()); // OK
+		
+		wm = new Woman(new BigDecimal(18.9), new BigDecimal(56), new BigDecimal(1.7));
+		System.out.println("\n" + wm.toString());
+		System.out.println(wm.commentBMI()); // OK
+
+		wm = new Woman(new BigDecimal(0), new BigDecimal(78.6), new BigDecimal(1.8));
+		System.out.println("\n" + wm.toString());
+		System.out.println(wm.commentBMI());
+		
+		wm = new Woman(new BigDecimal(11), new BigDecimal(78.6), new BigDecimal(1.8));
 		System.out.println("\n" + wm.toString());
 		System.out.println(wm.commentBMI());
 
-		wm = new Woman(11, 78.6, 1.8);
+		wm = new Woman(new BigDecimal(19), new BigDecimal(155), new BigDecimal(-2));
 		System.out.println("\n" + wm.toString());
 		System.out.println(wm.commentBMI());
 
-		wm = new Woman(19, 155, -2);
+		wm = new Woman(new BigDecimal(-2), new BigDecimal(88), new BigDecimal(1.9));
 		System.out.println("\n" + wm.toString());
 		System.out.println(wm.commentBMI());
 
-		wm = new Woman(-2, 88, 1.9);
+		wm = new Woman(new BigDecimal(333), new BigDecimal(88), new BigDecimal(1.9));
 		System.out.println("\n" + wm.toString());
 		System.out.println(wm.commentBMI());
 
-		wm = new Woman(333, 88, 1.9);
+		wm = new Woman(new BigDecimal(19), new BigDecimal(77), new BigDecimal(3.1));
+		System.out.println("\n" + wm.toString());
+		System.out.println(wm.commentBMI());
+
+		wm = new Woman(new BigDecimal(19), new BigDecimal(777), new BigDecimal(1.6));
 		System.out.println("\n" + wm.toString());
 		System.out.println(wm.commentBMI());
 

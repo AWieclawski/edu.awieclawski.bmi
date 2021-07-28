@@ -63,4 +63,5 @@ public class InputDataController {
 		model.addAttribute("message", Comments.CANCEL);
 		return "/upform";
 	}
+	
 }

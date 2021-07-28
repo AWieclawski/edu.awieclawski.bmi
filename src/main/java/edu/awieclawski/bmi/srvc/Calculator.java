@@ -1,5 +1,6 @@
 package edu.awieclawski.bmi.srvc;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
 import edu.awieclawski.bmi.exc.NotInRangeException;
@@ -13,12 +14,13 @@ import edu.awieclawski.bmi.exc.NotPositiveException;
  */
 public class Calculator {
 
-	public int getBMITire(Map<double[], double[][]> map, double bmi, int age) throws NotInRangeException {
+	public int getBMITire(Map<BigDecimal[], BigDecimal[][]> map, BigDecimal bmi, BigDecimal age)
+			throws NotInRangeException {
 		int result = 1;
 		boolean check = false;
 		boolean found = false;
 
-		if (bmi == 0)
+		if (bmi.compareTo(BigDecimal.ZERO) == 0)
 			return -1;
 
 		try {
@@ -30,16 +32,18 @@ public class Calculator {
 
 		if (check) {
 
-			for (Map.Entry<double[], double[][]> entry : map.entrySet())
-				if (entry.getKey()[0] <= age && entry.getKey()[1] > age)
-					for (double[] tmp : entry.getValue())
-						if (tmp[0] <= bmi && tmp[1] > bmi) {
+			for (Map.Entry<BigDecimal[], BigDecimal[][]> entry : map.entrySet()) {
+				if (entry.getKey()[0].compareTo(age) <= 0 && entry.getKey()[1].compareTo(age) > 0)
+					for (BigDecimal[] tmp : entry.getValue()) {
+						if (tmp[0].compareTo(bmi) <= 0 && tmp[1].compareTo(bmi) > 0) {
 							found = true;
 							break;
 						} else
 							result++;
-
+					}
+			}
 		}
+//		System.out.println("found=" + found + ", count=" + result + ", check=" + check);
 		if (found)
 			return result;
 		else {

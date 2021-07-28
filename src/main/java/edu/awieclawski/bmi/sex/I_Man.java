@@ -1,10 +1,10 @@
 package edu.awieclawski.bmi.sex;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
 import edu.awieclawski.bmi.base.Human;
-import edu.awieclawski.bmi.base.I_UOMs;
 
 /**
  * BMI table with data regarding Male
@@ -12,32 +12,38 @@ import edu.awieclawski.bmi.base.I_UOMs;
  * @author AWieclawski
  *
  */
-public interface I_Man extends I_UOMs {
+public interface I_Man {
 
 	final static boolean IS_MAN = true;
 	final static String SEX = "Male";
 
-	public static Map<double[], double[][]> getBMImap() {
-		double[] key = new double[1];
-		double[][] value = new double[1][4];
-		Map<double[], double[][]> mapBMI = new HashMap<>();
-		key = new double[] { Human.AGE_MIN, 24 };
-		value = new double[][] { { Human.MIN_BMI, 20 }, { 20, 25 }, { 25, 29 }, { 29, Human.MAX_BMI } };
+	public static Map<BigDecimal[], BigDecimal[][]> getBMImap() {
+		BigDecimal[] key = new BigDecimal[1];
+		BigDecimal[][] value = new BigDecimal[1][4];
+		Map<BigDecimal[], BigDecimal[][]> mapBMI = new HashMap<>();
+		key = new BigDecimal[] { Human.AGE_MIN, new BigDecimal(24) };
+		value = new BigDecimal[][] { { Human.MIN_BMI, new BigDecimal(20) }, { new BigDecimal(20), new BigDecimal(25) },
+				{ new BigDecimal(25), new BigDecimal(29) }, { new BigDecimal(29), Human.MAX_BMI } };
 		mapBMI.put(key, value);
-		key = new double[] { 24, 34 };
-		value = new double[][] { { Human.MIN_BMI, 21 }, { 21, 26 }, { 26, 30 }, { 30, Human.MAX_BMI } };
+		key = new BigDecimal[] { new BigDecimal(24), new BigDecimal(34) };
+		value = new BigDecimal[][] { { Human.MIN_BMI, new BigDecimal(21) }, { new BigDecimal(21), new BigDecimal(26) },
+				{ new BigDecimal(26), new BigDecimal(30) }, { new BigDecimal(30), Human.MAX_BMI } };
 		mapBMI.put(key, value);
-		key = new double[] { 34, 44 };
-		value = new double[][] { { Human.MIN_BMI, 22 }, { 22, 27 }, { 27, 31 }, { 31, Human.MAX_BMI } };
+		key = new BigDecimal[] { new BigDecimal(34), new BigDecimal(44) };
+		value = new BigDecimal[][] { { Human.MIN_BMI, new BigDecimal(22) }, { new BigDecimal(22), new BigDecimal(27) },
+				{ new BigDecimal(27), new BigDecimal(31) }, { new BigDecimal(31), Human.MAX_BMI } };
 		mapBMI.put(key, value);
-		key = new double[] { 44, 54 };
-		value = new double[][] { { Human.MIN_BMI, 23 }, { 23, 28 }, { 28, 32 }, { 32, Human.MAX_BMI } };
+		key = new BigDecimal[] { new BigDecimal(44), new BigDecimal(54) };
+		value = new BigDecimal[][] { { Human.MIN_BMI, new BigDecimal(23) }, { new BigDecimal(23), new BigDecimal(28) },
+				{ new BigDecimal(28), new BigDecimal(32) }, { new BigDecimal(32), Human.MAX_BMI } };
 		mapBMI.put(key, value);
-		key = new double[] { 54, 64 };
-		value = new double[][] { { Human.MIN_BMI, 24 }, { 24, 29 }, { 29, 33 }, { 33, Human.MAX_BMI } };
+		key = new BigDecimal[] { new BigDecimal(54), new BigDecimal(64) };
+		value = new BigDecimal[][] { { Human.MIN_BMI, new BigDecimal(24) }, { new BigDecimal(24), new BigDecimal(29) },
+				{ new BigDecimal(29), new BigDecimal(33) }, { new BigDecimal(33), Human.MAX_BMI } };
 		mapBMI.put(key, value);
-		key = new double[] { 64, Human.AGE_MAX };
-		value = new double[][] { { Human.MIN_BMI, 25 }, { 25, 30 }, { 30, 34 }, { 34, Human.MAX_BMI } };
+		key = new BigDecimal[] { new BigDecimal(64), Human.AGE_MAX };
+		value = new BigDecimal[][] { { Human.MIN_BMI, new BigDecimal(25) }, { new BigDecimal(25), new BigDecimal(30) },
+				{ new BigDecimal(30), new BigDecimal(34) }, { new BigDecimal(34), Human.MAX_BMI } };
 		mapBMI.put(key, value);
 
 		return mapBMI;

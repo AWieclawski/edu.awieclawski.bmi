@@ -1,48 +1,34 @@
 package edu.awieclawski.bmi.base;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import java.math.BigDecimal;
+//import java.math.MathContext;
+import java.math.RoundingMode;
+
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
+import edu.awieclawski.bmi.exc.NotInRangeException;
 import edu.awieclawski.bmi.exc.NotPositiveException;
 import edu.awieclawski.bmi.srvc.Validator;
 
-public abstract class Human implements I_Human {
-	private double zero = 0.0;
-	public final static double MIN_BMI = 0;
-//	public final static double MAX_BMI = 99;	
-//	public final static String WGHT_NOTNULL = "Weight cannot be null";
-//	public final static String HGHT_NOTNULL = "Height cannot be null";
-//	public final static String AGE_NOTNULL = "Age cannot be null";
-//	public final static int AGE_MIN = 18;
-//	public final static int AGE_MAX = 199;
-//	public final static String AGE_MINTXT = "Age should not be less than " + AGE_MIN;
-//	public final static String AGE_MAXTXT = "Age should not be greater than " + AGE_MAX;
-//	public final static int WGHT_MIN = 1;
-//	public final static int WGHT_MAX = 499;
-//	public final static String WGHT_MINTXT = "Weight should not be less than " + WGHT_MIN;
-//	public final static String WGHT_MAXTXT = "Weight should not be greater than " + WGHT_MAX;
-//	public final static int HGHT_MIN = 1;
-//	public final static int HGHT_MAX = 3;
-//	public final static String HGHT_MINTXT = "Height should not be less than " + HGHT_MIN;
-//	public final static String HGHT_MAXTXT = "Height should not be greater than " + HGHT_MAX;
+public abstract class Human implements I_Human, I_UOMs {
+	private final BigDecimal zero = BigDecimal.ZERO;
 
 	@NotNull(message = AGE_NOTNULL)
-	@Min(value = AGE_MIN, message = AGE_MINTXT)
-	@Max(value = AGE_MAX, message = AGE_MAXTXT)
-	private int age;
+	@DecimalMin(value = AGE_MINSTR, message = AGE_MINTXT)
+	@DecimalMax(value = AGE_MAXSTR, message = AGE_MAXTXT)
+	private BigDecimal age;
 
 	@NotNull(message = WGHT_NOTNULL)
-	@Max(value = WGHT_MAX, message = WGHT_MAXTXT)
-	private double weight;
+	@DecimalMax(value = WGHT_MAXSTR, message = WGHT_MAXTXT)
+	private BigDecimal weight;
 
 	@NotNull(message = HGHT_NOTNULL)
-	@Max(value = HGHT_MAX, message = HGHT_MAXTXT)
-	private double height;
+	@DecimalMax(value = HGHT_MAXSTR, message = HGHT_MAXTXT)
+	private BigDecimal height;
 
-	// TODO replace double by BigDecimal to make validation more correct
-
-	public Human(int age, double weight, double height) {
+	public Human(BigDecimal age, BigDecimal weight, BigDecimal height) {
 		super();
 		this.age = age;
 		this.weight = weight;
@@ -55,38 +41,40 @@ public abstract class Human implements I_Human {
 
 	public abstract String commentBMI();
 
-	protected double getBMI() {
-		if (this.weight > 0 && this.height > 0)
-			return this.weight / (this.height * this.height);
-		errorMsgs();
+	protected BigDecimal getBMI() {
+		if (this.weight.compareTo(zero) > 0 && this.height.compareTo(zero) > 0) {
+			if (displayErrorMsgsIfNotInRange())
+				return this.weight.divide(this.height.multiply(this.height), DEC_COMMA, RoundingMode.HALF_UP);
+		}
+		displayErrorMsgsIfNotBiggerThanZero();
 		return zero;
 	}
 
-	public int getAge() {
+	public BigDecimal getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(BigDecimal age) {
 		this.age = age;
 	}
 
-	public double getWeight() {
+	public BigDecimal getWeight() {
 		return weight;
 	}
 
-	public void setWeight(double weight) {
+	public void setWeight(BigDecimal weight) {
 		this.weight = weight;
 	}
 
-	public double getHeight() {
+	public BigDecimal getHeight() {
 		return height;
 	}
 
-	public void setHeight(double height) {
+	public void setHeight(BigDecimal height) {
 		this.height = height;
 	}
 
-	private void errorMsgs() {
+	private void displayErrorMsgsIfNotBiggerThanZero() {
 		try {
 			Validator.biggerThanZero(this.weight);
 		} catch (NotPositiveException e) {
@@ -98,6 +86,44 @@ public abstract class Human implements I_Human {
 		} catch (NotPositiveException e) {
 			System.out.println(e.getMessage() + "|Height=" + this.height);
 		}
+	}
+
+	private boolean displayErrorMsgsIfNotInRange() {
+		boolean result = true;
+		try {
+			Validator.isInRange(this.weight, WGHT_MIN, WGHT_MAX);
+		} catch (NotInRangeException e) {
+			result = false;
+			System.out.println(e.getMessage() + "|Weight=" + DEC_FORMAT.format(getWeight()));
+		}
+
+		try {
+			Validator.isInRange(this.height, HGHT_MIN, HGHT_MAX);
+		} catch (NotInRangeException e) {
+			result = false;
+			System.out.println(e.getMessage() + "|Height=" + DEC_FORMAT.format(getHeight()));
+		}
+
+		return result;
+	}
+
+	public boolean displayErrorMsgsIfBMINotInRange() {
+		boolean result = true;
+		try {
+			Validator.isInRange(this.age, AGE_MIN, AGE_MAX);
+		} catch (NotInRangeException e) {
+			result = false;
+			System.out.println(e.getMessage() + "|Age=" + DEC_FORMAT.format(getAge()));
+		}
+
+		try {
+			Validator.isInRange(this.getBMI(), MIN_BMI, MAX_BMI);
+		} catch (NotInRangeException e) {
+			result = false;
+			System.out.println(e.getMessage() + "|BMI=" + DEC_FORMAT.format(getBMI()));
+		}
+		
+		return result;
 	}
 
 }
