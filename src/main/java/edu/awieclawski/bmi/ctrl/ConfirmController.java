@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import edu.awieclawski.bmi.dctr.I_UOMs;
 import edu.awieclawski.bmi.prsn.Man;
 import edu.awieclawski.bmi.prsn.Woman;
-import edu.awieclawski.bmi.tbl.I_Man;
-import edu.awieclawski.bmi.tbl.I_Woman;
 
 @Controller // landing page for results
 public class ConfirmController {
@@ -23,7 +21,6 @@ public class ConfirmController {
         model.addAttribute("agemtr", I_UOMs.MTR_AGE);
         model.addAttribute("heightmtr", I_UOMs.MTR_HGHT);
         model.addAttribute("weightmtr", I_UOMs.MTR_WGHT);
-        model.addAttribute("sex", I_Man.SEX);
 		// TODO Calculate BMI & ResultsView
 		return "/confirmview";
 	}
@@ -36,7 +33,6 @@ public class ConfirmController {
         model.addAttribute("agemtr", I_UOMs.MTR_AGE);
         model.addAttribute("heightmtr", I_UOMs.MTR_HGHT);
         model.addAttribute("weightmtr", I_UOMs.MTR_WGHT);
-        model.addAttribute("sex", I_Woman.SEX);
 		// TODO Calculate BMI & ResultsView
 		return "/confirmview";
 	}

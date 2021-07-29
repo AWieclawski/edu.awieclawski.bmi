@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div>
 
-	<h1>${sex}</h1>
+	<h1>${sessionScope["hed"]}</h1>
 
 	<pre>
 	

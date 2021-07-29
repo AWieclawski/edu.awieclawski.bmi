@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.awieclawski.bmi.base.I_Human;
 import edu.awieclawski.bmi.dctr.Comments;
 import edu.awieclawski.bmi.prsn.Man;
 import edu.awieclawski.bmi.prsn.Woman;
@@ -29,16 +30,20 @@ public class InputDataController {
 	@RequestMapping(value = "/upman", method = RequestMethod.POST, params = "submit")
 	public String submitMan(@Valid @ModelAttribute("man") final Man man, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
-			model.addAttribute("ismale", true); // very important to correct handle form partials
+			// important to correct handle form partials
+			model.addAttribute("ismale", true); 
 			return "/upform";
 		}
 		model.addAttribute("sessionperson", man);
 		return "redirect:/confirmman";
 	}
 
-	@RequestMapping(value = "/upman", method = RequestMethod.POST, params = "cancel")
+	@RequestMapping(value = "/upman", method = RequestMethod.POST, params = "reset")
 	public String cancelMan(@Valid @ModelAttribute("man") final Man man, BindingResult result, ModelMap model) {
 		model.addAttribute("message", Comments.CANCEL.getDescription());
+		// resets values to minimum
+		model.addAttribute("man", new Man(I_Human.AGE_MIN, I_Human.WGHT_MIN, I_Human.HGHT_MIN));
+		// important to correct handle form partials
 		model.addAttribute("ismale", true);
 		return "/upform";
 	}
@@ -52,18 +57,22 @@ public class InputDataController {
 	@RequestMapping(value = "/upwoman", method = RequestMethod.POST, params = "submit")
 	public String submitWoman(@Valid @ModelAttribute("woman") final Woman woman, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
-			model.addAttribute("ismale", false); // very important to correct handle form partials
+			// important to correct handle form partials
+			model.addAttribute("ismale", false); 
 			return "/upform";
 		}
 		model.addAttribute("sessionperson", woman);
 		return "redirect:/confirmwoman";
 	}
 
-	@RequestMapping(value = "/upwoman", method = RequestMethod.POST, params = "cancel")
+	@RequestMapping(value = "/upwoman", method = RequestMethod.POST, params = "reset")
 	public String cancelWoman(@Valid @ModelAttribute("woman") final Woman woman, BindingResult result, ModelMap model) {
 		model.addAttribute("message", Comments.CANCEL.getDescription());
-		model.addAttribute("ismale", false); 
+		// resets values to minimum
+		model.addAttribute("woman", new Woman(I_Human.AGE_MIN, I_Human.WGHT_MIN, I_Human.HGHT_MIN));
+		// important to correct handle form partials
+		model.addAttribute("ismale", false);
 		return "/upform";
 	}
-	
+
 }
