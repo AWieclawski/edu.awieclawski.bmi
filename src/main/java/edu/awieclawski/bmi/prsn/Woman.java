@@ -22,6 +22,7 @@ public class Woman extends Human implements I_Woman {
 		super();
 	}
 
+	@Override
 	public String getCommentBMI() {
 		return buildCommentBMI(I_Woman.getBMImap());
 	}

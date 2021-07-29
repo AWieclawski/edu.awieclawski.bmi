@@ -22,6 +22,7 @@ public class Man extends Human implements I_Man {
 		super();
 	}
 
+	@Override
 	public String getCommentBMI() {
 		return buildCommentBMI(I_Man.getBMImap());
 	}

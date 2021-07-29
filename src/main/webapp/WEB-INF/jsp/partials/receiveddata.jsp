@@ -3,15 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div>
 
-	<h1>${sessionScope["hed"]}</h1>
+	<h1>${sessionScope["head"]}</h1>
 
 	<pre>
 	
-	Age: ${age} ${agemtr} <br>
+	Age: ${age} ${sessionScope["agemtr"]} <br>
 
-	Weight: ${weight} ${heightmtr} <br>
+	Weight: ${weight} ${sessionScope["heightmtr"]} <br>
 
-	Height: ${height} ${weightmtr}
+	Height: ${height} ${sessionScope["weightmtr"]}
 	
 	</pre>
 

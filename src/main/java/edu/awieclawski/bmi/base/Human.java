@@ -43,6 +43,8 @@ public abstract class Human implements I_Human, I_UOMs {
 	public Human() {
 		super();
 	}
+	
+	public abstract String getCommentBMI();
 
 	protected BigDecimal getBMI() {
 		if (isBiggerThanZero())

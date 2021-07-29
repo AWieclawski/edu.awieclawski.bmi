@@ -4,19 +4,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div>
 
-	<c:set var="sex" scope="session" value="woman" />
+	<c:set var="per" scope="session" value="woman" />
 	<c:set var="act" scope="session" value="upwoman" />
-	<c:set var="hed" scope="session" value="Female" />
 	<c:if test="${ismale}">
-		<c:set var="sex" scope="session" value="man" />
+		<c:set var="per" scope="session" value="man" />
 		<c:set var="act" scope="session" value="upman" />
-		<c:set var="hed" scope="session" value="Male" />
 	</c:if>
 
-	<h3>Input data to calculate ${hed} BMI</h3>
+	<h3>Input data to calculate ${sessionScope["head"]} BMI</h3>
 
 	<form:form class="form-horizontal" action="/${act}" method="post"
-		modelAttribute="${sex}" enctype="multipart/form-data">
+		modelAttribute="${per}" enctype="multipart/form-data">
 
 		<div class="form-group">
 
@@ -24,7 +22,7 @@
 
 			<div class="col-sm-10">
 
-				<form:input path="age" placeholder="input age" />
+				<form:input path="age" placeholder="input age" /> ${sessionScope["agemtr"]}
 				<form:errors class="alert alert-warning" path="age" />
 
 			</div>
@@ -37,7 +35,7 @@
 
 			<div class="col-sm-10">
 
-				<form:input path="weight" placeholder="input weight" />
+				<form:input path="weight" placeholder="input weight" /> ${sessionScope["heightmtr"]}
 				<form:errors class="alert alert-warning" path="weight" />
 
 			</div>
@@ -50,7 +48,7 @@
 
 			<div class="col-sm-10">
 
-				<form:input path="height" placeholder="input height" />
+				<form:input path="height" placeholder="input height" /> ${sessionScope["weightmtr"]}
 				<form:errors class="alert alert-warning" path="height" />
 
 			</div>

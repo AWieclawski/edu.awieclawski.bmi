@@ -14,16 +14,23 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.awieclawski.bmi.base.I_Human;
 import edu.awieclawski.bmi.dctr.Comments;
+import edu.awieclawski.bmi.dctr.I_UOMs;
 import edu.awieclawski.bmi.prsn.Man;
 import edu.awieclawski.bmi.prsn.Woman;
+import edu.awieclawski.bmi.tbl.I_Man;
+import edu.awieclawski.bmi.tbl.I_Woman;
 
 @Controller
-@SessionAttributes("sessionperson") // Woman or Man instance
+@SessionAttributes({"sessionperson","agemtr","heightmtr","weightmtr","ismale","head"}) // Woman or Man instance
 public class InputDataController {
 
 	@RequestMapping(value = "/man", method = RequestMethod.GET)
 	public ModelAndView showMan(Model model) {
-		model.addAttribute("ismale", true);
+        model.addAttribute("agemtr", I_UOMs.MTR_AGE);
+        model.addAttribute("heightmtr", I_UOMs.MTR_HGHT);
+        model.addAttribute("weightmtr", I_UOMs.MTR_WGHT);
+		model.addAttribute("ismale", I_Man.IS_MAN);
+		model.addAttribute("head",I_Man.SEX);
 		return new ModelAndView("/upform", "man", new Man());
 	}
 
@@ -50,7 +57,11 @@ public class InputDataController {
 
 	@RequestMapping(value = "/woman", method = RequestMethod.GET)
 	public ModelAndView showWoman(Model model) {
-		model.addAttribute("ismale", false);
+        model.addAttribute("agemtr", I_UOMs.MTR_AGE);
+        model.addAttribute("heightmtr", I_UOMs.MTR_HGHT);
+        model.addAttribute("weightmtr", I_UOMs.MTR_WGHT);
+		model.addAttribute("ismale", I_Woman.IS_MAN);
+		model.addAttribute("head",I_Woman.SEX);
 		return new ModelAndView("/upform", "woman", new Woman());
 	}
 
