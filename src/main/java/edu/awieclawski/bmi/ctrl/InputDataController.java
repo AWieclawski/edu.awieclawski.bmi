@@ -14,21 +14,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.awieclawski.bmi.base.I_Human;
 import edu.awieclawski.bmi.dctr.Comments;
-import edu.awieclawski.bmi.dctr.I_UOMs;
 import edu.awieclawski.bmi.prsn.Man;
 import edu.awieclawski.bmi.prsn.Woman;
 import edu.awieclawski.bmi.tbl.I_Man;
 import edu.awieclawski.bmi.tbl.I_Woman;
 
 @Controller
-@SessionAttributes({"sessionperson","agemtr","heightmtr","weightmtr","ismale","head"}) // Woman or Man instance
+@SessionAttributes({"sessionperson","ismale","head"}) // Woman or Man instance
 public class InputDataController {
 
 	@RequestMapping(value = "/man", method = RequestMethod.GET)
 	public ModelAndView showMan(Model model) {
-        model.addAttribute("agemtr", I_UOMs.MTR_AGE);
-        model.addAttribute("heightmtr", I_UOMs.MTR_HGHT);
-        model.addAttribute("weightmtr", I_UOMs.MTR_WGHT);
 		model.addAttribute("ismale", I_Man.IS_MAN);
 		model.addAttribute("head",I_Man.SEX);
 		return new ModelAndView("/upform", "man", new Man());
@@ -37,12 +33,10 @@ public class InputDataController {
 	@RequestMapping(value = "/upman", method = RequestMethod.POST, params = "submit")
 	public String submitMan(@Valid @ModelAttribute("man") final Man man, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
-			// important to correct handle form partials
-			model.addAttribute("ismale", true); 
 			return "/upform";
 		}
 		model.addAttribute("sessionperson", man);
-		return "redirect:/confirmman";
+		return "redirect:/displayman";
 	}
 
 	@RequestMapping(value = "/upman", method = RequestMethod.POST, params = "reset")
@@ -50,16 +44,11 @@ public class InputDataController {
 		model.addAttribute("message", Comments.CANCEL.getDescription());
 		// resets values to minimum
 		model.addAttribute("man", new Man(I_Human.AGE_MIN, I_Human.WGHT_MIN, I_Human.HGHT_MIN));
-		// important to correct handle form partials
-		model.addAttribute("ismale", true);
 		return "/upform";
 	}
 
 	@RequestMapping(value = "/woman", method = RequestMethod.GET)
 	public ModelAndView showWoman(Model model) {
-        model.addAttribute("agemtr", I_UOMs.MTR_AGE);
-        model.addAttribute("heightmtr", I_UOMs.MTR_HGHT);
-        model.addAttribute("weightmtr", I_UOMs.MTR_WGHT);
 		model.addAttribute("ismale", I_Woman.IS_MAN);
 		model.addAttribute("head",I_Woman.SEX);
 		return new ModelAndView("/upform", "woman", new Woman());
@@ -68,12 +57,10 @@ public class InputDataController {
 	@RequestMapping(value = "/upwoman", method = RequestMethod.POST, params = "submit")
 	public String submitWoman(@Valid @ModelAttribute("woman") final Woman woman, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
-			// important to correct handle form partials
-			model.addAttribute("ismale", false); 
 			return "/upform";
 		}
 		model.addAttribute("sessionperson", woman);
-		return "redirect:/confirmwoman";
+		return "redirect:/displaywoman";
 	}
 
 	@RequestMapping(value = "/upwoman", method = RequestMethod.POST, params = "reset")
@@ -81,8 +68,6 @@ public class InputDataController {
 		model.addAttribute("message", Comments.CANCEL.getDescription());
 		// resets values to minimum
 		model.addAttribute("woman", new Woman(I_Human.AGE_MIN, I_Human.WGHT_MIN, I_Human.HGHT_MIN));
-		// important to correct handle form partials
-		model.addAttribute("ismale", false);
 		return "/upform";
 	}
 

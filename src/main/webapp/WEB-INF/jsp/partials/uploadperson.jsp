@@ -35,7 +35,7 @@
 
 			<div class="col-sm-10">
 
-				<form:input path="weight" placeholder="input weight" /> ${sessionScope["heightmtr"]}
+				<form:input path="weight" placeholder="input weight" /> ${sessionScope["hghtmtr"]}
 				<form:errors class="alert alert-warning" path="weight" />
 
 			</div>
@@ -48,7 +48,7 @@
 
 			<div class="col-sm-10">
 
-				<form:input path="height" placeholder="input height" /> ${sessionScope["weightmtr"]}
+				<form:input path="height" placeholder="input height" /> ${sessionScope["wghtmtr"]}
 				<form:errors class="alert alert-warning" path="height" />
 
 			</div>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Person to confirm</title>
+<title>Result of the analyze</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script
@@ -21,7 +21,7 @@
 
 		<div class="jumbotron text-center">
 
-			<jsp:include page="partials/receiveddata.jsp" />
+			<h2>some results!</h2>
 
 		</div>
 
