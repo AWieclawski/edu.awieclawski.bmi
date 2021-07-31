@@ -4,7 +4,6 @@ import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +30,7 @@ public class InputDataController {
 	}
 
 	@RequestMapping(value = "/upman", method = RequestMethod.POST, params = "submit")
-	public String submitMan(@Valid @ModelAttribute("man") final Man man, BindingResult result, ModelMap model) {
+	public String submitMan(@Valid @ModelAttribute("man") final Man man, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			return "/upform";
 		}
@@ -40,7 +39,7 @@ public class InputDataController {
 	}
 
 	@RequestMapping(value = "/upman", method = RequestMethod.POST, params = "reset")
-	public String cancelMan(@Valid @ModelAttribute("man") final Man man, BindingResult result, ModelMap model) {
+	public String cancelMan(@Valid @ModelAttribute("man") final Man man, BindingResult result, Model model) {
 		model.addAttribute("message", Comments.CANCEL.getDescription());
 		// resets values to minimum
 		model.addAttribute("man", new Man(I_Human.AGE_MIN, I_Human.WGHT_MIN, I_Human.HGHT_MIN));
@@ -55,7 +54,7 @@ public class InputDataController {
 	}
 
 	@RequestMapping(value = "/upwoman", method = RequestMethod.POST, params = "submit")
-	public String submitWoman(@Valid @ModelAttribute("woman") final Woman woman, BindingResult result, ModelMap model) {
+	public String submitWoman(@Valid @ModelAttribute("woman") final Woman woman, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			return "/upform";
 		}
@@ -64,7 +63,7 @@ public class InputDataController {
 	}
 
 	@RequestMapping(value = "/upwoman", method = RequestMethod.POST, params = "reset")
-	public String cancelWoman(@Valid @ModelAttribute("woman") final Woman woman, BindingResult result, ModelMap model) {
+	public String cancelWoman(@Valid @ModelAttribute("woman") final Woman woman, BindingResult result, Model model) {
 		model.addAttribute("message", Comments.CANCEL.getDescription());
 		// resets values to minimum
 		model.addAttribute("woman", new Woman(I_Human.AGE_MIN, I_Human.WGHT_MIN, I_Human.HGHT_MIN));

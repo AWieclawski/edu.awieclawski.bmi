@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Result of the analyze</title>
+<title>Result</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script
@@ -18,10 +18,9 @@
 
 		<jsp:include page="partials/menu.jsp" />
 
-
 		<div class="jumbotron text-center">
 
-			<h2>some results!</h2>
+			<jsp:include page="partials/receivedresult.jsp" />
 
 		</div>
 

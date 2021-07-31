@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import edu.awieclawski.bmi.dctr.Comments;
+
 @Controller
 public class ErrorHandlerController implements ErrorController {
 
@@ -34,7 +36,7 @@ public class ErrorHandlerController implements ErrorController {
 	@RequestMapping("/errorplain")
 	@ResponseBody
 	public String getErrorPath() {
-		return "<center><h1>Something went wrong</h1></center>";
+		return "<center><h1>Error</h1><h3>" + Comments.ERROR.getDescription() + "</h3></center>";
 	}
 
 }

@@ -5,6 +5,6 @@
 
 	<h1>Welcome</h1>
 
-	<p>This is welcome page of the BMI</p>
+	<h3>This is welcome page of the BMI</h3>
 
 </div>

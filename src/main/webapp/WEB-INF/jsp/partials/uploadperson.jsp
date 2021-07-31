@@ -2,16 +2,24 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:set var="per" scope="session" value="woman" />
+
+<c:set var="act" scope="session" value="upwoman" />
+
+<c:if test="${ismale}">
+
+	<c:set var="per" scope="session" value="man" />
+
+	<c:set var="act" scope="session" value="upman" />
+
+</c:if>
+
+<h1>${sessionScope["head"]}</h1>
+
+<h3>Input data to calculateBMI</h3>
+
 <div>
-
-	<c:set var="per" scope="session" value="woman" />
-	<c:set var="act" scope="session" value="upwoman" />
-	<c:if test="${ismale}">
-		<c:set var="per" scope="session" value="man" />
-		<c:set var="act" scope="session" value="upman" />
-	</c:if>
-
-	<h3>Input data to calculate ${sessionScope["head"]} BMI</h3>
 
 	<form:form class="form-horizontal" action="/${act}" method="post"
 		modelAttribute="${per}" enctype="multipart/form-data">
@@ -22,7 +30,8 @@
 
 			<div class="col-sm-10">
 
-				<form:input path="age" placeholder="input age" /> ${sessionScope["agemtr"]}
+				<form:input path="age" placeholder="input age" />
+				${sessionScope["agemtr"]}
 				<form:errors class="alert alert-warning" path="age" />
 
 			</div>
@@ -35,7 +44,10 @@
 
 			<div class="col-sm-10">
 
-				<form:input path="weight" placeholder="input weight" /> ${sessionScope["hghtmtr"]}
+				<form:input path="weight" placeholder="input weight" />
+
+				${sessionScope["wghtmtr"]}
+
 				<form:errors class="alert alert-warning" path="weight" />
 
 			</div>
@@ -48,7 +60,10 @@
 
 			<div class="col-sm-10">
 
-				<form:input path="height" placeholder="input height" /> ${sessionScope["wghtmtr"]}
+				<form:input path="height" placeholder="input height" />
+
+				${sessionScope["hghtmtr"]}
+
 				<form:errors class="alert alert-warning" path="height" />
 
 			</div>
