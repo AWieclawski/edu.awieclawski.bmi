@@ -8,11 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import edu.awieclawski.bmi.prsn.Man;
 import edu.awieclawski.bmi.prsn.Woman;
 
 @Controller // data presentation
+@SessionAttributes("sessionresult") // person result
 public class ConfirmationController {
 
 	private final static Logger LOGGER = Logger.getLogger(ConfirmationController.class.getName());
@@ -29,14 +31,14 @@ public class ConfirmationController {
 		return "/confirmview";
 	}
 
-	@RequestMapping(value = "/confirmman", method = RequestMethod.POST, params = "submit")
+	@RequestMapping(value = "/confirmman", method = RequestMethod.POST, params = "confirm")
 	public String submitMan(@SessionAttribute("sessionperson") Man manReceived, Model model) {
 		if (manReceived != null) {
-			LOGGER.log(Level.INFO, " -- manReceived=" + manReceived.toString());
+			model.addAttribute("sessionresult", manReceived.getCommentBMI());
 		} else {
 			LOGGER.log(Level.SEVERE, " -- No manReceived=" + manReceived);
 		}
-		return "redirect:/manresult";
+		return "redirect:/displayresult";
 	}
 
 	@RequestMapping(value = "/displaywoman", method = RequestMethod.GET)
@@ -51,13 +53,13 @@ public class ConfirmationController {
 		return "/confirmview";
 	}
 
-	@RequestMapping(value = "/confirmwoman", method = RequestMethod.POST, params = "submit")
+	@RequestMapping(value = "/confirmwoman", method = RequestMethod.POST, params = "confirm")
 	public String submitWoman(@SessionAttribute("sessionperson") Woman womanReceived, Model model) {
 		if (womanReceived != null) {
-			LOGGER.log(Level.INFO, " -- womanReceived=" + womanReceived.toString());
+			model.addAttribute("sessionresult", womanReceived.getCommentBMI());
 		} else {
 			LOGGER.log(Level.SEVERE, " -- No womanReceived=" + womanReceived);
 		}
-		return "redirect:/womanresult";
+		return "redirect:/displayresult";
 	}
 }
