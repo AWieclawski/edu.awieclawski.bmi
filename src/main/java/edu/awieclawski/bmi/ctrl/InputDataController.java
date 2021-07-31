@@ -41,7 +41,7 @@ public class InputDataController {
 	@RequestMapping(value = "/upman", method = RequestMethod.POST, params = "reset")
 	public String cancelMan(@Valid @ModelAttribute("man") final Man man, BindingResult result, Model model) {
 		model.addAttribute("message", Comments.CANCEL.getDescription());
-		// resets values to minimum
+		// sets all values to minimum ones
 		model.addAttribute("man", new Man(I_Human.AGE_MIN, I_Human.WGHT_MIN, I_Human.HGHT_MIN));
 		return "/upform";
 	}
@@ -65,7 +65,7 @@ public class InputDataController {
 	@RequestMapping(value = "/upwoman", method = RequestMethod.POST, params = "reset")
 	public String cancelWoman(@Valid @ModelAttribute("woman") final Woman woman, BindingResult result, Model model) {
 		model.addAttribute("message", Comments.CANCEL.getDescription());
-		// resets values to minimum
+		// sets all values to minimum ones
 		model.addAttribute("woman", new Woman(I_Human.AGE_MIN, I_Human.WGHT_MIN, I_Human.HGHT_MIN));
 		return "/upform";
 	}

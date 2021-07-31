@@ -1,9 +1,10 @@
 package edu.awieclawski.bmi.base;
 
 import java.math.BigDecimal;
-//import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
@@ -18,7 +19,10 @@ import edu.awieclawski.bmi.srvc.Selector;
 import edu.awieclawski.bmi.srvc.Validator;
 
 public abstract class Human implements I_Human, I_UOMs {
-	private final BigDecimal zero = BigDecimal.ZERO;
+
+	private final static Logger LOGGER = Logger.getLogger(Human.class.getName());
+
+	private final BigDecimal ZERO = BigDecimal.ZERO;
 
 	@NotNull(message = AGE_NOTNULL)
 	@DecimalMin(value = AGE_MINSTR, message = AGE_MINTXT)
@@ -43,25 +47,27 @@ public abstract class Human implements I_Human, I_UOMs {
 	public Human() {
 		super();
 	}
-	
+
 	public abstract String getCommentBMI();
 
 	protected BigDecimal getBMI() {
 		if (isBiggerThanZero())
 			if (isNotInRange())
 				return this.weight.divide(this.height.multiply(this.height), DEC_COMMA, RoundingMode.HALF_UP);
-		return zero;
+		return ZERO;
 	}
 
 	protected String buildCommentBMI(Map<BigDecimal[], BigDecimal[][]> map) {
 		String result = Comments.ERROR.getDescription();
 		int tire = -1;
 		boolean check = true;
+
 		try {
 			tire = new Calculator().getBMITire(map, getBMI(), getAge());
 		} catch (NotInRangeException e) {
 			check = ifNotFoundInTable();
 		}
+
 		if (tire > 0 && check)
 			result = new Selector().buildComment(tire);
 
@@ -94,17 +100,18 @@ public abstract class Human implements I_Human, I_UOMs {
 
 	private boolean isBiggerThanZero() {
 		boolean result = true;
+
 		try {
 			Validator.biggerThanZero(this.weight);
 		} catch (NotPositiveException e) {
-			System.out.println(e.getMessage() + "|Weight=" + this.weight);
+			LOGGER.log(Level.SEVERE, e.getMessage() + "|Weight=" + this.weight);
 			result = false;
 		}
 
 		try {
 			Validator.biggerThanZero(this.height);
 		} catch (NotPositiveException e) {
-			System.out.println(e.getMessage() + "|Height=" + this.height);
+			LOGGER.log(Level.SEVERE, e.getMessage() + "|Height=" + this.height);
 			result = false;
 		}
 
@@ -113,18 +120,19 @@ public abstract class Human implements I_Human, I_UOMs {
 
 	private boolean isNotInRange() {
 		boolean result = true;
+
 		try {
 			Validator.isInRange(this.weight, WGHT_MIN, WGHT_MAX);
 		} catch (NotInRangeException e) {
 			result = false;
-			System.out.println(e.getMessage() + "|Weight=" + DEC_FORMAT.format(getWeight()));
+			LOGGER.log(Level.SEVERE, e.getMessage() + "|Weight=" + DEC_FORMAT.format(getWeight()));
 		}
 
 		try {
 			Validator.isInRange(this.height, HGHT_MIN, HGHT_MAX);
 		} catch (NotInRangeException e) {
 			result = false;
-			System.out.println(e.getMessage() + "|Height=" + DEC_FORMAT.format(getHeight()));
+			LOGGER.log(Level.SEVERE, e.getMessage() + "|Height=" + DEC_FORMAT.format(getHeight()));
 		}
 
 		return result;
@@ -136,14 +144,14 @@ public abstract class Human implements I_Human, I_UOMs {
 			Validator.isInRange(this.age, AGE_MIN, AGE_MAX);
 		} catch (NotInRangeException e) {
 			result = false;
-			System.out.println(e.getMessage() + "|Age=" + DEC_FORMAT.format(getAge()));
+			LOGGER.log(Level.SEVERE, e.getMessage() + "|Age=" + DEC_FORMAT.format(getAge()));
 		}
 
 		try {
 			Validator.isInRange(this.getBMI(), MIN_BMI, MAX_BMI);
 		} catch (NotInRangeException e) {
 			result = false;
-			System.out.println(e.getMessage() + "|BMI=" + DEC_FORMAT.format(getBMI()));
+			LOGGER.log(Level.SEVERE, e.getMessage() + "|BMI=" + DEC_FORMAT.format(getBMI()));
 		}
 
 		return result;

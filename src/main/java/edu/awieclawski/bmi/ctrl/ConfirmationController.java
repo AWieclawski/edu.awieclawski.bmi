@@ -26,7 +26,6 @@ public class ConfirmationController {
 		} else {
 			return "redirect:/home";
 		}
-		// TODO Calculate BMI & ResultsView
 		return "/confirmview";
 	}
 
@@ -49,7 +48,6 @@ public class ConfirmationController {
 		} else {
 			return "redirect:/home";
 		}
-		// TODO Calculate BMI & ResultsView
 		return "/confirmview";
 	}
 
