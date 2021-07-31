@@ -6,3 +6,6 @@
 
 <h3>The result is: ${resultreceived}</h3>
 
+<jsp:include page="sub/personcard.jsp" />
+
+

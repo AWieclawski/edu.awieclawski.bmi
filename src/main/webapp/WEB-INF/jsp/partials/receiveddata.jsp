@@ -17,29 +17,16 @@
 
 <div>
 
+	<jsp:include page="sub/personcard.jsp" />
 
-	<div class="card">
-
-		<div class="card-body">
-
-			<p>Age: ${age} ${sessionScope["agemtr"]}</p>
-
-			<p>Weight: ${wght} ${sessionScope["wghtmtr"]}</p>
-
-			<p>Height: ${hght} ${sessionScope["hghtmtr"]}</p>
-
-		</div>
-
-	</div>
-
-	<!-- POST confirm -->
+	<!-- POST confirm / cancel -->
 
 	<form:form class="form-horizontal" action="/${act}" method="post"
-		enctype="multipart/form-data">
+		enctype="application/x-www-form-urlencoded">
 
 		<div class="form-group">
 
-			<div class="col-sm-offset-2 col-sm-10">
+			<div class="col-sm-12">
 
 				<button class="btn btn-primary" type="submit" name="confirm">Confirm</button>
 

@@ -16,7 +16,7 @@ import edu.awieclawski.bmi.prsn.Man;
 import edu.awieclawski.bmi.prsn.Woman;
 
 @Controller // data presentation
-@SessionAttributes("sessionresult") // person result
+@SessionAttributes({ "sessionresult", "age", "hght", "wght" }) // person result
 public class ConfirmationController {
 
 	private final static Logger LOGGER = Logger.getLogger(ConfirmationController.class.getName());
