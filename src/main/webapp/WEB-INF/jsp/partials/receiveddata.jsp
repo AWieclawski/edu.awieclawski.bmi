@@ -43,7 +43,7 @@
 
 				<button class="btn btn-primary" type="submit" name="confirm">Confirm</button>
 
-				<button class="btn btn-secondary" type="submit" name="reset">Reset</button>
+				<button class="btn btn-secondary" type="submit" name="cancel">Cancel</button>
 
 			</div>
 

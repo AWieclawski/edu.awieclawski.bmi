@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import edu.awieclawski.bmi.base.I_Human;
+import edu.awieclawski.bmi.dctr.Comments;
 import edu.awieclawski.bmi.prsn.Man;
 import edu.awieclawski.bmi.prsn.Woman;
 
@@ -18,6 +20,8 @@ import edu.awieclawski.bmi.prsn.Woman;
 public class ConfirmationController {
 
 	private final static Logger LOGGER = Logger.getLogger(ConfirmationController.class.getName());
+
+// man	
 
 	@RequestMapping(value = "/displayman", method = RequestMethod.GET)
 	public String showMan(Model model, @SessionAttribute("sessionperson") Man manReceived) {
@@ -41,6 +45,16 @@ public class ConfirmationController {
 		return "redirect:/displayresult";
 	}
 
+	@RequestMapping(value = "/confirmman", method = RequestMethod.POST, params = "cancel")
+	public String cancelMan(Model model) {
+		model.addAttribute("message", Comments.CANCEL.getDescription());
+		// sets all values to minimum ones
+		model.addAttribute("man", new Man(I_Human.AGE_MIN, I_Human.WGHT_MIN, I_Human.HGHT_MIN));
+		return "/upform";
+	}
+
+// woman
+
 	@RequestMapping(value = "/displaywoman", method = RequestMethod.GET)
 	public String showWoman(Model model, @SessionAttribute("sessionperson") Woman womanReceived) {
 		if (womanReceived != null) {
@@ -61,5 +75,13 @@ public class ConfirmationController {
 			LOGGER.log(Level.SEVERE, " -- No womanReceived=" + womanReceived);
 		}
 		return "redirect:/displayresult";
+	}
+
+	@RequestMapping(value = "/confirmwoman", method = RequestMethod.POST, params = "cancel")
+	public String cancelWoman(Model model) {
+		model.addAttribute("message", Comments.CANCEL.getDescription());
+		// sets all values to minimum ones
+		model.addAttribute("woman", new Woman(I_Human.AGE_MIN, I_Human.WGHT_MIN, I_Human.HGHT_MIN));
+		return "/upform";
 	}
 }
