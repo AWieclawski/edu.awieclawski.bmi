@@ -8,15 +8,23 @@ import java.util.logging.Logger;
 public class BigDecimalEditor extends PropertyEditorSupport {
 
 	private final static Logger LOGGER = Logger.getLogger(BigDecimalEditor.class.getName());
+	private final String DOT = ".";
+	private final String COMMA = ",";
 
 	public void setAsText(String text) {
 		String number = "0";
-		if (text != null) {
+		if (text.isEmpty() || text == null) {
+			setValue(null);
+		} else
+
+		{
+			if (text.contains(COMMA))
+				text = text.replaceAll(COMMA, DOT);
+
 			number = text;
 
-			// NumberFormat formatter = NumberFormat.getNumberInstance(Locale.ENGLISH);
-
-			// catch exception if ex. number has comma instead of dot
+			// catch exception if number has more comma than one, or other "trash-chars"
+			// and returns null if any error
 			try {
 				BigDecimal bigDecimal = new BigDecimal(number);
 				setValue(bigDecimal);
