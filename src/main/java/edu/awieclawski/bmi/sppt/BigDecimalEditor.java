@@ -11,7 +11,7 @@ public class BigDecimalEditor extends PropertyEditorSupport {
 	private final String DOT = ".";
 	private final String COMMA = ",";
 
-	public void setAsText(String text) {
+	public void setAsText(String text) throws NumberFormatException {
 		String number = "0";
 		if (text.isEmpty() || text == null) {
 			setValue(null);
@@ -24,12 +24,13 @@ public class BigDecimalEditor extends PropertyEditorSupport {
 			number = text;
 
 			// catch exception if number has more comma than one, or other "trash-chars"
-			// and returns null if any error
+			// and returns exception with customized error message
 			try {
 				BigDecimal bigDecimal = new BigDecimal(number);
 				setValue(bigDecimal);
 			} catch (NumberFormatException e) {
 				LOGGER.log(Level.SEVERE, e.getMessage() + "|" + number);
+				throw new NumberFormatException("The Number not recognised! ");
 			}
 		}
 	}
