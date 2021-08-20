@@ -1,11 +1,15 @@
 package edu.awieclawski.bmi.ctrl;
 
+import java.math.BigDecimal;
+
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +20,7 @@ import edu.awieclawski.bmi.base.I_Human;
 import edu.awieclawski.bmi.dctr.Comments;
 import edu.awieclawski.bmi.prsn.Man;
 import edu.awieclawski.bmi.prsn.Woman;
+import edu.awieclawski.bmi.sppt.BigDecimalEditor;
 
 @Controller
 @SessionAttributes("sessionperson") // Woman or Man instance
@@ -31,7 +36,7 @@ public class InputDataController {
 	public String submitMan(@Valid @ModelAttribute("man") final Man man, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			// important to correct handle form partials
-			model.addAttribute("ismale", true); 
+			model.addAttribute("ismale", true);
 			return "/upform";
 		}
 		model.addAttribute("sessionperson", man);
@@ -58,7 +63,7 @@ public class InputDataController {
 	public String submitWoman(@Valid @ModelAttribute("woman") final Woman woman, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			// important to correct handle form partials
-			model.addAttribute("ismale", false); 
+			model.addAttribute("ismale", false);
 			return "/upform";
 		}
 		model.addAttribute("sessionperson", woman);
@@ -73,6 +78,16 @@ public class InputDataController {
 		// important to correct handle form partials
 		model.addAttribute("ismale", false);
 		return "/upform";
+	}
+
+	/**
+	 * Enables dedicated control before data conversion to BigDecimal format
+	 * 
+	 * @param binder
+	 */
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(BigDecimal.class, new BigDecimalEditor());
 	}
 
 }
