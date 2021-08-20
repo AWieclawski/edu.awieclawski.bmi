@@ -5,6 +5,12 @@ import java.math.BigDecimal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Customized, dedicated control during data conversion to BigDecimal format
+ * 
+ * @author AWieclawski
+ *
+ */
 public class BigDecimalEditor extends PropertyEditorSupport {
 
 	private final static Logger LOGGER = Logger.getLogger(BigDecimalEditor.class.getName());
