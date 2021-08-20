@@ -20,11 +20,9 @@ import edu.awieclawski.bmi.dctr.Comments;
 import edu.awieclawski.bmi.prsn.Man;
 import edu.awieclawski.bmi.prsn.Woman;
 import edu.awieclawski.bmi.sppt.BigDecimalEditor;
-<<<<<<< HEAD
 import edu.awieclawski.bmi.tbl.I_Man;
 import edu.awieclawski.bmi.tbl.I_Woman;
-=======
->>>>>>> spring
+
 
 @Controller
 @SessionAttributes({ "sessionperson", "ismale", "head" }) // Woman or Man instance
@@ -40,11 +38,6 @@ public class InputDataController {
 	@RequestMapping(value = "/upman", method = RequestMethod.POST, params = "submit")
 	public String submitMan(@Valid @ModelAttribute("man") final Man man, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-<<<<<<< HEAD
-=======
-			// important to correct handle form partials
-			model.addAttribute("ismale", true);
->>>>>>> spring
 			return "/upform";
 		}
 		model.addAttribute("sessionperson", man);
@@ -69,11 +62,6 @@ public class InputDataController {
 	@RequestMapping(value = "/upwoman", method = RequestMethod.POST, params = "submit")
 	public String submitWoman(@Valid @ModelAttribute("woman") final Woman woman, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-<<<<<<< HEAD
-=======
-			// important to correct handle form partials
-			model.addAttribute("ismale", false);
->>>>>>> spring
 			return "/upform";
 		}
 		model.addAttribute("sessionperson", woman);
@@ -88,11 +76,6 @@ public class InputDataController {
 		return "/upform";
 	}
 	
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-	    binder.registerCustomEditor(BigDecimal.class, 
-	        new BigDecimalEditor());
-	}
 
 	/**
 	 * Enables dedicated control before data conversion to BigDecimal format
