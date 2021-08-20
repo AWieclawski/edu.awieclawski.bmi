@@ -23,7 +23,6 @@ import edu.awieclawski.bmi.sppt.BigDecimalEditor;
 import edu.awieclawski.bmi.tbl.I_Man;
 import edu.awieclawski.bmi.tbl.I_Woman;
 
-
 @Controller
 @SessionAttributes({ "sessionperson", "ismale", "head" }) // Woman or Man instance
 public class InputDataController {
@@ -75,7 +74,6 @@ public class InputDataController {
 		model.addAttribute("woman", new Woman(I_Human.AGE_MIN, I_Human.WGHT_MIN, I_Human.HGHT_MIN));
 		return "/upform";
 	}
-	
 
 	/**
 	 * Enables dedicated control before data conversion to BigDecimal format
